@@ -2,8 +2,6 @@ $(document).ready(function () {
     startNewGame();
 });
 
-
-
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length,
@@ -65,10 +63,6 @@ function startNewGame() {
 
         myCounter += 1;
     })
-
-
-
-
 }
 
 /*
@@ -83,12 +77,10 @@ function startNewGame() {
  */
 
 $(".card").click(function () {
-    console.log("Clicked " + this.className);
 
     if (this.className == "card open show") {
         this.className = "card";
-    }
-    else if (this.className == "card") {
+    } else if (this.className == "card") {
         this.className = "card open show";
     }
 });
