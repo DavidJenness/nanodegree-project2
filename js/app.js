@@ -39,10 +39,40 @@ function shuffle(array) {
  */
 
 $(document).ready(function () {
+    let myDeck = shuffle(["fa fa-diamond",
+        "fa fa-paper-plane-o",
+        "fa fa-anchor",
+        "fa fa-bolt",
+        "fa fa-cube",
+        "fa fa-anchor",
+        "fa fa-leaf",
+        "fa fa-bicycle",
+        "fa fa-diamond",
+        "fa fa-bomb",
+        "fa fa-leaf",
+        "fa fa-bomb",
+        "fa fa-bolt",
+        "fa fa-bicycle",
+        "fa fa-paper-plane-o",
+        "fa fa-cube"
+    ]);
 
-    let myDeck = shuffle(["diamond", "plane", "anchor", "bolt", "cube", "leaf", "bicycle", "bomb", "diamond", "plane", "anchor", "bolt", "cube", "leaf", "bicycle", "bomb"]);
+   
+    let myCounter = 1;
     myDeck.forEach(function (element) {
-        console.log(element);
+        let myLocationID = "#" + "location" + myCounter.toString();
+        
+        //Temp to show all values
+        let myParent = $(myLocationID).parent();
+        $(myParent).removeClass();
+        $(myParent).addClass("card open show");
+
+
+        console.log(myLocationID + " = " + element);
+        $(myLocationID).removeClass();
+        $(myLocationID).addClass(element);
+
+        myCounter += 1;
     })
 
 
