@@ -12,7 +12,8 @@
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length,
+        temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -37,14 +38,17 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-$( document ).ready(function() {
-  console.log("ready player one");
-   
-  $(".card").click(function() {
+$(document).ready(function () {
+
+    let myDeck = shuffle(["diamond", "plane", "anchor", "bolt", "cube", "leaf", "bicycle", "bomb", "diamond", "plane", "anchor", "bolt", "cube", "leaf", "bicycle", "bomb"]);
+    myDeck.forEach(function (element) {
+        console.log(element);
+    })
+
+
+    $(".card").click(function () {
         console.log("Clicked");
     });
 
 
-  });
-
-
+});
