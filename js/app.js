@@ -25,12 +25,6 @@ function shuffle(array) {
     return array;
 }
 
-function changeCardAppearance(object, string) {
-    const location = object.location;
-    $(location).className = string;
-    return;
-}
-
 function startNewGame() {
     // This function is called whenever the page is loaded, 
     // or the refresh button is pressed
@@ -125,9 +119,9 @@ $(".card").click(function () {
             var foundIndex = openList.filter(function (e) {
                 return e.desc == secondPick;
             });
-           
+
             console.log("Found Index = " + foundIndex);
-           
+
             if (foundIndex.length == 0) {
 
                 this.className = "card";
