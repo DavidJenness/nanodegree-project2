@@ -3,6 +3,7 @@ let matchList = [];
 let openList = [];
 let moveCount = 0;
 let waitForNextClick = false;
+let timerOn = true;
 let numStars = 5;
 
 let numSecondsElapsed = 0;
@@ -13,8 +14,11 @@ $(document).ready(function () {
 });
 
 function setMyTimer() {
-    $("h3").text("Timer: " + numSecondsElapsed);
-    numSecondsElapsed += 1;
+    if (timerOn) {
+        $("h3").text("Timer: " + numSecondsElapsed);
+        numSecondsElapsed += 1;
+    }
+
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -41,7 +45,7 @@ function drawStars() {
     //Now draw either a full or half star depending on the score
     for (let i = 0; i < numStars; i++) {
         let myDiff = numStars - i;
-        console.log ("numStars - i = " + myDiff);
+        // console.log("numStars - i = " + myDiff);
         if (numStars - i == 0) {
             $(".stars").append(" <li> <i class=\"fa fa-star-half\"></i> </li>");
         } else {
@@ -59,25 +63,27 @@ function startNewGame() {
     numSecondsElapsed = 0;
     numStars = 5;
     drawStars();
+    timerOn = true;
+    numberOfMatches =0;
     $(".moves").text(moveCount);
     /*
      * Create a list that holds all of your cards
      */
-    myDeck = shuffle(["fa fa-diamond",
-        "fa fa-paper-plane-o",
+    myDeck = shuffle(["far fa-gem",
+        "fa far fa-paper-plane",
         "fa fa-anchor",
         "fa fa-bolt",
         "fa fa-cube",
         "fa fa-anchor",
         "fa fa-leaf",
         "fa fa-bicycle",
-        "fa fa-diamond",
+        "far fa-gem",
         "fa fa-bomb",
         "fa fa-leaf",
         "fa fa-bomb",
         "fa fa-bolt",
         "fa fa-bicycle",
-        "fa fa-paper-plane-o",
+        "fa far fa-paper-plane",
         "fa fa-cube"
     ]);
 
@@ -114,9 +120,9 @@ function startNewGame() {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+
 $(".card").click(function () {
     if (waitForNextClick) return; //Waiting on the animation to complete
-    console.log("--------------------------------");
     if (this.className != "card") {
         return;
     } else {
@@ -167,7 +173,7 @@ $(".card").click(function () {
                 return e.desc == secondPick;
             });
 
-       
+
             const locToPass = "#" + openList[0].location;
             const secondObject = this;
             if (foundIndex.length == 0) {
@@ -187,6 +193,10 @@ $(".card").click(function () {
                 $(locOfFirstGuess).parent("li").removeClass();
                 $(locOfFirstGuess).parent("li").addClass("card match");
 
+                //Check if you have won the game
+                if (matchList.length == 8) {
+                    timerOn = false;
+                }
             }
             openList.length = 0;
         }
