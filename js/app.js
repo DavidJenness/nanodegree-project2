@@ -43,15 +43,20 @@ function drawStars() {
     myList.remove();
 
     //Now draw either a full or half star depending on the score
-    for (let i = 0; i < numStars; i++) {
-        let myDiff = numStars - i;
-        // console.log("numStars - i = " + myDiff);
-        if (numStars - i == 0) {
-            $(".stars").append(" <li> <i class=\"fa fa-star-half\"></i> </li>");
-        } else {
-            $(".stars").append(" <li> <i class=\"fa fa-star\"></i> </li>");
-        }
+
+//TODO: See if I can get away from this wonky variable for displaying correct number of stars
+    let redrawStars = numStars;
+    if (numStars % 1 != 0) redrawStars = redrawStars -1;
+    for (let i = 0; i < redrawStars; i++) {
+        let myDiff = redrawStars - i;
+         $(".stars").append(" <li> <i class=\"fa fa-star\"></i> </li>");
+
     }
+    if (numStars % 1 != 0)
+    {
+        $(".stars").append(" <li> <i class=\"fa fa-star-half\"></i> </li>");
+    }
+    
 }
 
 function startNewGame() {
@@ -145,23 +150,33 @@ $(".card").click(function () {
             $(".moves").text(moveCount);
 
             if (moveCount < 5) {
+                console.log("should be 5")
                 numStars = 5;
-            } else if (moveCount < 10) {
+            } else if (moveCount < 6) {
                 console.log("should be 4.5");
                 numStars = 4.5;
-            } else if (moveCount < 15) {
+            } else if (moveCount < 7) {
                 console.log("should be 4");
                 numStars = 4;
-            } else if (moveCount < 25) {
+            } else if (moveCount < 9) {
                 console.log("should be 3.5");
                 numStars = 3.5;
-            } else if (moveCount < 30) {
+            } else if (moveCount < 11) {
                 console.log("should be 3");
                 numStars = 3;
-            } else if (moveCount < 35) {
+            } else if (moveCount < 13) {
                 console.log("should be 2.5");
                 numStars = 2.5;
+            } else if (moveCount < 15) {
+                console.log("should be 2");
+                numStars = 2;
+            } else if (moveCount < 17) {
+                console.log("should be 1.5");
+                numStars = 1.5;
+            } else {
+                numStars = 1;
             }
+
 
             drawStars();
 
