@@ -3,6 +3,7 @@ let matchList = [];
 let openList = [];
 let moveCount = 0;
 let waitForNextClick = false;
+let numStars = 5;
 
 let numSecondsElapsed = 0;
 let myTimer = setInterval(setMyTimer, 1000);
@@ -14,7 +15,6 @@ $(document).ready(function () {
 function setMyTimer() {
     $("h3").text("Timer: " + numSecondsElapsed);
     numSecondsElapsed += 1;
-    console.log("tick");
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -33,6 +33,21 @@ function shuffle(array) {
     return array;
 }
 
+function drawStars() {
+    //Delete the the children of class="stars"
+    let myList = $(".stars").children();
+    myList.remove();
+
+    //Now draw either a full or half star depending on the score
+    for (let i = 0; i < numStars; i++) {
+        if (numStars - i == 0) {
+            $(".stars").append(" <li> <i class=\"fa fa-star-half\"></i> </li>");
+        } else {
+            $(".stars").append(" <li> <i class=\"fa fa-star\"></i> </li>");
+        }
+    }
+}
+
 function startNewGame() {
     // This function is called whenever the page is loaded, 
     // or the refresh button is pressed
@@ -40,6 +55,7 @@ function startNewGame() {
     //reset Moves
     moveCount = 0;
     numSecondsElapsed = 0;
+    drawStars();
     $(".moves").text(moveCount);
     /*
      * Create a list that holds all of your cards
