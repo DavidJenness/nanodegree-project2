@@ -4,8 +4,6 @@ let openList = [];
 let moveCount = 0;
 let waitForNextClick = false;
 
-
-
 $(document).ready(function () {
     startNewGame();
 });
@@ -88,6 +86,7 @@ function startNewGame() {
  */
 
 $(".card").click(function () {
+    if (waitForNextClick) return; //Waiting on the animation to complete
     console.log("--------------------------------");
     console.log("Clicked a :" + this.className);
     if (this.className != "card") {
@@ -125,12 +124,16 @@ $(".card").click(function () {
             const locToPass = "#" + openList[0].location;
             const secondObject = this;
             if (foundIndex.length == 0) {
+                waitForNextClick = true;
                 setTimeout(function () {
                     secondObject.className = "card";
                     const locOfFirstGuess = locToPass;
                     $(locOfFirstGuess).parent("li").removeClass();
                     $(locOfFirstGuess).parent("li").addClass("card");
+                    console.log("setTimeout complete")
+                    waitForNextClick = false;
                 }, 1500, locToPass, secondObject);
+                
             } else {
                 matchList.push(secondPick);
                 this.className = "card match";
