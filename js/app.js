@@ -44,19 +44,18 @@ function drawStars() {
 
     //Now draw either a full or half star depending on the score
 
-//TODO: See if I can get away from this wonky variable for displaying correct number of stars
+    //TODO: See if I can get away from this wonky variable for displaying correct number of stars
     let redrawStars = numStars;
-    if (numStars % 1 != 0) redrawStars = redrawStars -1;
+    if (numStars % 1 != 0) redrawStars = redrawStars - 1;
     for (let i = 0; i < redrawStars; i++) {
         let myDiff = redrawStars - i;
-         $(".stars").append(" <li> <i class=\"fa fa-star\"></i> </li>");
+        $(".stars").append(" <li> <i class=\"fa fa-star\"></i> </li>");
 
     }
-    if (numStars % 1 != 0)
-    {
+    if (numStars % 1 != 0) {
         $(".stars").append(" <li> <i class=\"fa fa-star-half\"></i> </li>");
     }
-    
+
 }
 
 function startNewGame() {
@@ -69,7 +68,7 @@ function startNewGame() {
     numStars = 5;
     drawStars();
     timerOn = true;
-    numberOfMatches =0;
+    numberOfMatches = 0;
     $(".moves").text(moveCount);
     /*
      * Create a list that holds all of your cards
@@ -150,34 +149,24 @@ $(".card").click(function () {
             $(".moves").text(moveCount);
 
             if (moveCount < 5) {
-                console.log("should be 5")
                 numStars = 5;
             } else if (moveCount < 6) {
-                console.log("should be 4.5");
                 numStars = 4.5;
             } else if (moveCount < 7) {
-                console.log("should be 4");
                 numStars = 4;
             } else if (moveCount < 9) {
-                console.log("should be 3.5");
                 numStars = 3.5;
             } else if (moveCount < 11) {
-                console.log("should be 3");
                 numStars = 3;
             } else if (moveCount < 13) {
-                console.log("should be 2.5");
                 numStars = 2.5;
             } else if (moveCount < 15) {
-                console.log("should be 2");
                 numStars = 2;
             } else if (moveCount < 17) {
-                console.log("should be 1.5");
                 numStars = 1.5;
             } else {
                 numStars = 1;
             }
-
-
             drawStars();
 
             //Have to see if we have a match
@@ -209,10 +198,12 @@ $(".card").click(function () {
                 $(locOfFirstGuess).parent("li").addClass("card match");
 
                 //Check if you have won the game
+
                 if (matchList.length == 8) {
                     timerOn = false;
                     alert("You Win with a score of " + numStars + " stars and a time of " + numSecondsElapsed + " seconds.")
                 }
+
             }
             openList.length = 0;
         }
