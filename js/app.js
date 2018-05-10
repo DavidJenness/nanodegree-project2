@@ -1,3 +1,10 @@
+let myDeck = [];
+let matchList = [];
+let openList = [];
+let moveCount = 0;
+
+
+
 $(document).ready(function () {
     startNewGame();
 });
@@ -18,14 +25,23 @@ function shuffle(array) {
     return array;
 }
 
+function changeCardAppearance(object, string) {
+    const location = object.location;
+    $(location).className = string;
+    return;
+}
+
 function startNewGame() {
     // This function is called whenever the page is loaded, 
     // or the refresh button is pressed
 
+    //reset Moves
+    moveCount = 0;
+    $(".moves").text(moveCount);
     /*
      * Create a list that holds all of your cards
      */
-    let myDeck = shuffle(["fa fa-diamond",
+    myDeck = shuffle(["fa fa-diamond",
         "fa fa-paper-plane-o",
         "fa fa-anchor",
         "fa fa-bolt",
@@ -77,11 +93,55 @@ function startNewGame() {
  */
 
 $(".card").click(function () {
+    console.log("--------------------------------");
+    console.log("Clicked a :" + this.className);
+    if (this.className != "card") {
+        return;
+    } else {
+        console.log("openList =" + openList);
+        console.log("matchList =" + matchList);
 
-    if (this.className == "card open show") {
-        this.className = "card";
-    } else if (this.className == "card") {
+        console.log("Setting " + this + " class name to card open show");
         this.className = "card open show";
+
+        //Check to see if there are any cards opened, if not, then add one
+        if (openList.length == 0) {
+            //push an object that has the location and description
+            const desc = jQuery(this).children("i:first").attr("class");
+            const location = jQuery(this).children("i:first").attr("id");
+            const myGuess = {
+                "desc": desc,
+                "location": location
+            };
+            openList.push(myGuess);
+        } else {
+            //Have to see if we have a match
+            const secondPick = jQuery(this).children("i:first").attr("class");
+
+            //const foundIndex = openList.indexOf(secondPick);
+            var foundIndex = openList.filter(function (e) {
+                return e.desc == secondPick;
+            });
+           
+            console.log("Found Index = " + foundIndex);
+           
+            if (foundIndex.length == 0) {
+
+                this.className = "card";
+                const locOfFirstGuess = "#" + openList[0].location;
+                $(locOfFirstGuess).parent("li").removeClass();
+                $(locOfFirstGuess).parent("li").addClass("card");
+
+            } else {
+                matchList.push(secondPick);
+                this.className = "card match";
+                const locOfFirstGuess = "#" + openList[0].location;
+                $(locOfFirstGuess).parent("li").removeClass();
+                $(locOfFirstGuess).parent("li").addClass("card match");
+
+            }
+            openList.length = 0;
+        }
     }
 });
 
