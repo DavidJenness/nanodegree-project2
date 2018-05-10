@@ -115,6 +115,9 @@ $(".card").click(function () {
             };
             openList.push(myGuess);
         } else {
+            //increase the move count
+            moveCount += 1;
+            $(".moves").text(moveCount);
             //Have to see if we have a match
             const secondPick = jQuery(this).children("i:first").attr("class");
 
