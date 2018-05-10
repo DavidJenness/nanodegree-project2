@@ -4,9 +4,18 @@ let openList = [];
 let moveCount = 0;
 let waitForNextClick = false;
 
+let numSecondsElapsed = 0;
+let myTimer = setInterval(setMyTimer, 1000);
+
 $(document).ready(function () {
     startNewGame();
 });
+
+function setMyTimer() {
+    $("h3").text("Timer: " + numSecondsElapsed);
+    numSecondsElapsed += 1;
+    console.log("tick");
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -30,6 +39,7 @@ function startNewGame() {
 
     //reset Moves
     moveCount = 0;
+    numSecondsElapsed = 0;
     $(".moves").text(moveCount);
     /*
      * Create a list that holds all of your cards
@@ -133,7 +143,7 @@ $(".card").click(function () {
                     console.log("setTimeout complete")
                     waitForNextClick = false;
                 }, 1500, locToPass, secondObject);
-                
+
             } else {
                 matchList.push(secondPick);
                 this.className = "card match";
