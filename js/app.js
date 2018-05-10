@@ -211,6 +211,7 @@ $(".card").click(function () {
                 //Check if you have won the game
                 if (matchList.length == 8) {
                     timerOn = false;
+                    alert("You Win with a score of " + numStars + " stars and a time of " + numSecondsElapsed + " seconds.")
                 }
             }
             openList.length = 0;
