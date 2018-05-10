@@ -40,6 +40,8 @@ function drawStars() {
 
     //Now draw either a full or half star depending on the score
     for (let i = 0; i < numStars; i++) {
+        let myDiff = numStars - i;
+        console.log ("numStars - i = " + myDiff);
         if (numStars - i == 0) {
             $(".stars").append(" <li> <i class=\"fa fa-star-half\"></i> </li>");
         } else {
@@ -55,6 +57,7 @@ function startNewGame() {
     //reset Moves
     moveCount = 0;
     numSecondsElapsed = 0;
+    numStars = 5;
     drawStars();
     $(".moves").text(moveCount);
     /*
@@ -114,14 +117,10 @@ function startNewGame() {
 $(".card").click(function () {
     if (waitForNextClick) return; //Waiting on the animation to complete
     console.log("--------------------------------");
-    console.log("Clicked a :" + this.className);
     if (this.className != "card") {
         return;
     } else {
-        console.log("openList =" + openList);
-        console.log("matchList =" + matchList);
 
-        console.log("Setting " + this + " class name to card open show");
         this.className = "card open show";
 
         //Check to see if there are any cards opened, if not, then add one
@@ -138,6 +137,28 @@ $(".card").click(function () {
             //increase the move count
             moveCount += 1;
             $(".moves").text(moveCount);
+
+            if (moveCount < 5) {
+                numStars = 5;
+            } else if (moveCount < 10) {
+                console.log("should be 4.5");
+                numStars = 4.5;
+            } else if (moveCount < 15) {
+                console.log("should be 4");
+                numStars = 4;
+            } else if (moveCount < 25) {
+                console.log("should be 3.5");
+                numStars = 3.5;
+            } else if (moveCount < 30) {
+                console.log("should be 3");
+                numStars = 3;
+            } else if (moveCount < 35) {
+                console.log("should be 2.5");
+                numStars = 2.5;
+            }
+
+            drawStars();
+
             //Have to see if we have a match
             const secondPick = jQuery(this).children("i:first").attr("class");
 
@@ -146,7 +167,7 @@ $(".card").click(function () {
                 return e.desc == secondPick;
             });
 
-            console.log("Found Index = " + foundIndex);
+       
             const locToPass = "#" + openList[0].location;
             const secondObject = this;
             if (foundIndex.length == 0) {
@@ -156,7 +177,6 @@ $(".card").click(function () {
                     const locOfFirstGuess = locToPass;
                     $(locOfFirstGuess).parent("li").removeClass();
                     $(locOfFirstGuess).parent("li").addClass("card");
-                    console.log("setTimeout complete")
                     waitForNextClick = false;
                 }, 1500, locToPass, secondObject);
 
