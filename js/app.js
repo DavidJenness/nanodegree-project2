@@ -2,6 +2,7 @@ let myDeck = [];
 let matchList = [];
 let openList = [];
 let moveCount = 0;
+let waitForNextClick = false;
 
 
 
@@ -121,14 +122,15 @@ $(".card").click(function () {
             });
 
             console.log("Found Index = " + foundIndex);
-
+            const locToPass = "#" + openList[0].location;
+            const secondObject = this;
             if (foundIndex.length == 0) {
-
-                this.className = "card";
-                const locOfFirstGuess = "#" + openList[0].location;
-                $(locOfFirstGuess).parent("li").removeClass();
-                $(locOfFirstGuess).parent("li").addClass("card");
-
+                setTimeout(function () {
+                    secondObject.className = "card";
+                    const locOfFirstGuess = locToPass;
+                    $(locOfFirstGuess).parent("li").removeClass();
+                    $(locOfFirstGuess).parent("li").addClass("card");
+                }, 1500, locToPass, secondObject);
             } else {
                 matchList.push(secondPick);
                 this.className = "card match";
