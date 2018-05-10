@@ -77,18 +77,18 @@ function startNewGame() {
         "fa far fa-paper-plane",
         "fa fa-anchor",
         "fa fa-bolt",
-        "fa fa-cube",
+        "fas fa-space-shuttle",
         "fa fa-anchor",
-        "fa fa-leaf",
+        "fas fa-dove",
         "fa fa-bicycle",
         "far fa-gem",
         "fa fa-bomb",
-        "fa fa-leaf",
+        "fas fa-dove",
         "fa fa-bomb",
         "fa fa-bolt",
         "fa fa-bicycle",
         "fa far fa-paper-plane",
-        "fa fa-cube"
+        "fas fa-space-shuttle"
     ]);
 
     /*
@@ -136,8 +136,8 @@ $(".card").click(function () {
         //Check to see if there are any cards opened, if not, then add one
         if (openList.length == 0) {
             //push an object that has the location and description
-            const desc = jQuery(this).children("i:first").attr("class");
-            const location = jQuery(this).children("i:first").attr("id");
+            const desc = $(this).children("i:first").attr("class");
+            const location = $(this).children("i:first").attr("id");
             const myGuess = {
                 "desc": desc,
                 "location": location
@@ -170,7 +170,7 @@ $(".card").click(function () {
             drawStars();
 
             //Have to see if we have a match
-            const secondPick = jQuery(this).children("i:first").attr("class");
+            const secondPick = $(this).children("i:first").attr("class");
 
             //const foundIndex = openList.indexOf(secondPick);
             var foundIndex = openList.filter(function (e) {
