@@ -79,6 +79,7 @@ function startNewGame() {
     drawStars();
     timerOn = true;
     numberOfMatches = 0;
+    matchList = [];
     $(".moves").text(moveCount);
     /*
      * Create a list that holds all of your cards
@@ -201,6 +202,7 @@ $(".card").click(function () {
                 }, 1500, locToPass, secondObject);
 
             } else {
+                console.log("push " + secondPick + " to matchList");
                 matchList.push(secondPick);
                 this.className = "card match";
                 const locOfFirstGuess = "#" + openList[0].location;
