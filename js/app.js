@@ -3,14 +3,14 @@ let matchList = [];
 let openList = [];
 let moveCount = 0;
 let waitForNextClick = false;
-let timerOn = true;
+let timerOn = false;
 let numStars = 5;
 
 let numSecondsElapsed = 0;
 let myTimer = setInterval(setMyTimer, 1000);
 
 $(document).ready(function () {
-    startNewGame();
+    showEndGame();
 });
 
 function showEndGame() { 
