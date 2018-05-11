@@ -13,6 +13,16 @@ $(document).ready(function () {
     startNewGame();
 });
 
+function showEndGame() { 
+    //Shows the final score
+    document.getElementById("endGameText").showModal(); 
+} 
+
+function playAgain() {
+    document.getElementById("endGameText").close();
+    startNewGame();
+}
+
 function setMyTimer() {
     if (timerOn) {
         $("h3").text("Timer: " + numSecondsElapsed);
@@ -201,7 +211,8 @@ $(".card").click(function () {
 
                 if (matchList.length == 8) {
                     timerOn = false;
-                    alert("You Win with a score of " + numStars + " stars and a time of " + numSecondsElapsed + " seconds.")
+                    showEndGame();
+                    //alert("You Win with a score of " + numStars + " stars and a time of " + numSecondsElapsed + " seconds.")
                 }
 
             }
