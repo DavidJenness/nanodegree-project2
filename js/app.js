@@ -155,10 +155,9 @@ $(".card").click(function () {
             };
             openList.push(myGuess);
         } else {
-            //increase the move count
             moveCount += 1;
             $(".moves").text(moveCount);
-
+            //Calculating the Score
             if (moveCount < 10) {
                 numStars = 5;
             } else if (moveCount < 13) {
@@ -210,7 +209,6 @@ $(".card").click(function () {
                 $(locOfFirstGuess).parent("li").addClass("card match");
 
                 //Check if you have won the game
-
                 if (matchList.length == 8) {
                     timerOn = false;
                     const victoryMessage = "You Win with a score of " + numStars + " stars and a time of " + numSecondsElapsed + " seconds.";
