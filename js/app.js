@@ -212,6 +212,7 @@ $(".card").click(function () {
                 if (matchList.length == 8) {
                     timerOn = false;
                     const victoryMessage = "You Win with a score of " + numStars + " stars and a time of " + numSecondsElapsed + " seconds.";
+                    $("h3").text("Timer: " + numSecondsElapsed);
                     $("#dialogText").text(victoryMessage);
                     showDialog();
                 }
