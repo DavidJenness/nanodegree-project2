@@ -112,3 +112,8 @@ h3 {
     float: right;
     cursor: pointer;
 }
+
+.dialogFormat {
+    display: flex;
+    flex-direction: column;
+}

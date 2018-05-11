@@ -10,16 +10,16 @@ let numSecondsElapsed = 0;
 let myTimer = setInterval(setMyTimer, 1000);
 
 $(document).ready(function () {
-    showEndGame();
+    showDialog();
 });
 
-function showEndGame() { 
+function showDialog() {
     //Shows the final score
-    document.getElementById("endGameText").showModal(); 
-} 
+    document.getElementById("dialogBox").showModal();
+}
 
 function playAgain() {
-    document.getElementById("endGameText").close();
+    document.getElementById("dialogBox").close();
     startNewGame();
 }
 
@@ -158,21 +158,21 @@ $(".card").click(function () {
             moveCount += 1;
             $(".moves").text(moveCount);
 
-            if (moveCount < 5) {
+            if (moveCount < 10) {
                 numStars = 5;
-            } else if (moveCount < 6) {
-                numStars = 4.5;
-            } else if (moveCount < 7) {
-                numStars = 4;
-            } else if (moveCount < 9) {
-                numStars = 3.5;
-            } else if (moveCount < 11) {
-                numStars = 3;
             } else if (moveCount < 13) {
+                numStars = 4.5;
+            } else if (moveCount < 16) {
+                numStars = 4;
+            } else if (moveCount < 19) {
+                numStars = 3.5;
+            } else if (moveCount < 22) {
+                numStars = 3;
+            } else if (moveCount < 25) {
                 numStars = 2.5;
-            } else if (moveCount < 15) {
+            } else if (moveCount < 28) {
                 numStars = 2;
-            } else if (moveCount < 17) {
+            } else if (moveCount < 31) {
                 numStars = 1.5;
             } else {
                 numStars = 1;
@@ -211,8 +211,9 @@ $(".card").click(function () {
 
                 if (matchList.length == 8) {
                     timerOn = false;
-                    showEndGame();
-                    //alert("You Win with a score of " + numStars + " stars and a time of " + numSecondsElapsed + " seconds.")
+                    const victoryMessage = "You Win with a score of " + numStars + " stars and a time of " + numSecondsElapsed + " seconds.";
+                    $("#dialogText").text(victoryMessage);
+                    showDialog();
                 }
 
             }
