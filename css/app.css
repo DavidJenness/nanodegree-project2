@@ -77,10 +77,12 @@ h3 {
 }
 
 .deck .card.show {
+    transform: rotateY(180deg);
     font-size: 33px;
 }
 
 .deck .card.match {
+    transform: rotateY(180deg);
     cursor: default;
     background: #02ccba;
     font-size: 33px;
