@@ -228,5 +228,6 @@ $(".card").click(function () {
 
 // Handle the restart button to reinitialize the game board
 $(".restart").click(function () {
-    startNewGame();
+    $(".deck").children().hide();
+    showDialog();
 });
