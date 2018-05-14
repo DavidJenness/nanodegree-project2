@@ -80,6 +80,7 @@ function startNewGame() {
     timerOn = true;
     numberOfMatches = 0;
     matchList = [];
+    openList = [];
     $(".moves").text(moveCount);
     /*
      * Create a list that holds all of your cards
@@ -228,6 +229,8 @@ $(".card").click(function () {
 
 // Handle the restart button to reinitialize the game board
 $(".restart").click(function () {
+    const resetMessage = "Your job is to match pairs of symbols";
+    $("#dialogText").text(resetMessage);
     $(".deck").children().hide();
     showDialog();
 });
