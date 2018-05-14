@@ -108,6 +108,7 @@ function startNewGame() {
      *   - loop through each card and create its HTML
      *   - add each card's HTML to the page
      */
+    $(".deck").children().hide();
     let myCounter = 1;
     myDeck.forEach(function (element) {
         let myLocationID = "#" + "location" + myCounter.toString();
@@ -122,6 +123,7 @@ function startNewGame() {
 
         myCounter += 1;
     })
+    $(".deck").children().show();
 }
 
 /*
@@ -214,6 +216,7 @@ $(".card").click(function () {
                     const victoryMessage = "You Win with a score of " + numStars + " stars and a time of " + numSecondsElapsed + " seconds.";
                     $("h3").text("Timer: " + numSecondsElapsed);
                     $("#dialogText").text(victoryMessage);
+                    $(".deck").children().hide();
                     showDialog();
                 }
 
