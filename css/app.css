@@ -27,13 +27,15 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 
 h1,
-h3 {
+#timer {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
 }
+
 
 /*
  * Styles for the deck of cards
@@ -69,6 +71,10 @@ h3 {
     transition: all 1s ease-in-out;
 }
 
+#timer {
+
+}
+
 .deck .card.open {
     transform: rotateY(180deg);
     background: #02b3e4;
@@ -93,16 +99,18 @@ h3 {
  */
 
 .score-panel {
-    text-align: left;
-    width: 345px;
+    text-align: center;
+    width: 75%;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .score-panel .stars {
     margin: 0;
     padding: 0;
     display: inline-block;
-    margin: 0 5px 0 0;
+    margin: 5px;
 }
 
 .score-panel .stars li {
@@ -111,9 +119,11 @@ h3 {
 }
 
 .score-panel .restart {
-    float: right;
     cursor: pointer;
+    margin: 5px;
 }
+
+
 
 .dialogFormat {
     display: flex;

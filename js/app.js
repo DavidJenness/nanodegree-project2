@@ -25,7 +25,7 @@ function playAgain() {
 
 function setMyTimer() {
     if (timerOn) {
-        $("h3").text("Timer: " + numSecondsElapsed);
+        $("#timer").text("Timer: " + numSecondsElapsed);
         numSecondsElapsed += 1;
     }
 
@@ -81,7 +81,7 @@ function startNewGame() {
     numberOfMatches = 0;
     matchList = [];
     openList = [];
-    $(".moves").text(moveCount);
+    $(".moves").text("Moves:" + moveCount);
     /*
      * Create a list that holds all of your cards
      */
@@ -159,7 +159,7 @@ $(".card").click(function () {
             openList.push(myGuess);
         } else {
             moveCount += 1;
-            $(".moves").text(moveCount);
+            $(".moves").text("Moves:" + moveCount);
             //Calculating the Score
             if (moveCount < 10) {
                 numStars = 5;
@@ -215,7 +215,7 @@ $(".card").click(function () {
                 if (matchList.length == 8) {
                     timerOn = false;
                     const victoryMessage = "You Win with a score of " + numStars + " stars and a time of " + numSecondsElapsed + " seconds.";
-                    $("h3").text("Timer: " + numSecondsElapsed);
+                    $("#timer").text("Timer: " + numSecondsElapsed);
                     $("#dialogText").text(victoryMessage);
                     $(".deck").children().hide();
                     showDialog();
