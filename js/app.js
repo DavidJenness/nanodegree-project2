@@ -19,6 +19,7 @@ function showDialog() {
 }
 
 function playAgain() {
+    //Ask the player if they want to start the game
     document.getElementById("dialogBox").close();
     startNewGame();
 }
@@ -28,14 +29,12 @@ function setMyTimer() {
         $("#timer").text("Timer: " + numSecondsElapsed);
         numSecondsElapsed += 1;
     }
-
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length,
         temporaryValue, randomIndex;
-
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -43,7 +42,6 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 
@@ -53,19 +51,15 @@ function drawStars() {
     myList.remove();
 
     //Now draw either a full or half star depending on the score
-
-    //TODO: See if I can get away from this wonky variable for displaying correct number of stars
     let redrawStars = numStars;
     if (numStars % 1 != 0) redrawStars = redrawStars - 1;
     for (let i = 0; i < redrawStars; i++) {
         let myDiff = redrawStars - i;
         $(".stars").append(" <li> <i class=\"fa fa-star\"></i> </li>");
-
     }
     if (numStars % 1 != 0) {
         $(".stars").append(" <li> <i class=\"fa fa-star-half\"></i> </li>");
     }
-
 }
 
 function startNewGame() {
@@ -113,32 +107,17 @@ function startNewGame() {
     let myCounter = 1;
     myDeck.forEach(function (element) {
         let myLocationID = "#" + "location" + myCounter.toString();
-
-        //Temp to show all values
         let myParent = $(myLocationID).parent();
         $(myParent).removeClass();
         $(myParent).addClass("card");
-
         $(myLocationID).removeClass();
         $(myLocationID).addClass(element);
-
         myCounter += 1;
     })
     $(".deck").children().show();
 }
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
-
-
+// Handle a card when it is clicked
 $(".card").click(function () {
     if (waitForNextClick) return; //Waiting on the animation to complete
     if (this.className != "card") {
@@ -160,7 +139,7 @@ $(".card").click(function () {
         } else {
             moveCount += 1;
             $(".moves").text("Moves:" + moveCount);
-            //Calculating the Score
+            //Calculating the number of stars to display
             if (moveCount < 10) {
                 numStars = 5;
             } else if (moveCount < 13) {
@@ -189,7 +168,6 @@ $(".card").click(function () {
             var foundIndex = openList.filter(function (e) {
                 return e.desc == secondPick;
             });
-
 
             const locToPass = "#" + openList[0].location;
             const secondObject = this;
@@ -220,7 +198,6 @@ $(".card").click(function () {
                     $(".deck").children().hide();
                     showDialog();
                 }
-
             }
             openList.length = 0;
         }

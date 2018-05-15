@@ -20,6 +20,8 @@
     }
 }
 
+/* Medium Style */
+
 @media all and (max-width: 660px) {
     .deck {
         width: 300px;
@@ -39,6 +41,8 @@
         max-width: 300px;
     }
 }
+
+/* Large Style */
 
 @media all and (max-width: 999px) {
     h1 {

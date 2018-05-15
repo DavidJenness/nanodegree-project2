@@ -116,7 +116,6 @@ h1,
     margin: 0;
     padding: 0;
     display: inline-block;
-    /* margin: 5px; */
 }
 
 .score-panel .stars li {
@@ -126,7 +125,6 @@ h1,
 
 .score-panel .restart {
     cursor: pointer;
-    /* margin: 5px; */
 }
 
 .dialogFormat {
