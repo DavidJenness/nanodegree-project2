@@ -1,0 +1,26 @@
+/* Smallest Style - Mobile Devices */
+@media all and (max-width: 330px) {
+    .deck {
+        width: 200px;
+        min-height: 380px;
+    }
+    .deck .card {
+        height: 50px;
+        width: 50px;
+    }
+}
+
+@media all and (max-width: 660px) {
+    .deck {
+        width: 300px;
+        min-height: 380px;
+    }
+    .deck .card {
+        height: 50px;
+        width: 50px;
+    }
+}
+
+/* Largest Style */
+
+@media all and (min-width: 1200px) {}
