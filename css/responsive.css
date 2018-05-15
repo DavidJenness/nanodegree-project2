@@ -8,6 +8,15 @@
         height: 50px;
         width: 50px;
     }
+
+    .deck .card.show {
+        font-size: 15px;
+    }
+    
+    .deck .card.match {
+        font-size: 15px;
+    }
+
 }
 
 @media all and (max-width: 660px) {
