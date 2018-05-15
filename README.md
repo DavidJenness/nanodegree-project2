@@ -4,18 +4,25 @@
 ## Table of Contents
 
 * [Instructions](#instructions)
-* [Contributing](#contributing)
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+This project was created for the *Udacity Front-End Nanodegree* program in May of 2018.
 
-To get started, open `js/app.js` and start building out the app's functionality
+It is a version of the classic memory game where users will attempt to match two cards. If they match correctly, then the cards will remain face up and they can no longer select them. 
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+Once all matches have been made, the game is complete and you will see a modal dialog box containing your score.
 
-## Contributing
+The star scoring is based on the number of moves you make:
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+* Less than 10 moves = __5__ Stars
+* Less than 13 moves = __4.5__ Stars
+* Less than 16 moves = __4__ Stars
+* Less than 19 moves = __3.5__ Stars
+* Less than 22 moves = __3__ Stars
+* Less than 25 moves = __2.5__ Stars
+* Less than 28 moves = __2__ Stars
+* Less than 31 moves = __1.5__ Stars
+* More than 30 moves = __1__ Star
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+[Click to run the game.](https://davidjenness.github.io/nanodegree-project2/)
