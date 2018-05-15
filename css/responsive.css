@@ -17,7 +17,6 @@
     }
     .score-panel {
         max-width: 270px;
-        
     }
 }
 
@@ -38,12 +37,27 @@
     }
     .score-panel {
         max-width: 300px;
-        
+    }
+}
+
+@media all and (max-width: 999px) {
+    h1 {
+        font-size: 40px;
+    }
+    #timer,
+    .moves {
+        font-size: 20px;
     }
 }
 
 /* Largest Style */
 
-@media all and (min-width: 1200px) {
-
+@media all and (min-width: 1000px) {
+    h1 {
+        font-size: 60px;
+    }
+    #timer,
+    .moves {
+        font-size: 30px;
+    }
 }
