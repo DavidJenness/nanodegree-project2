@@ -4,6 +4,7 @@
 ## Table of Contents
 
 * [Instructions](#instructions)
+* [Running the game](#running)
 
 ## Instructions
 
@@ -25,4 +26,6 @@ The star scoring is based on the number of moves you make:
 * Less than 31 moves = __1.5__ Stars
 * More than 30 moves = __1__ Star
 
-[Click to run the game.](https://davidjenness.github.io/nanodegree-project2/)
+## Running
+
+[Click here to run the game.](https://davidjenness.github.io/nanodegree-project2/)
