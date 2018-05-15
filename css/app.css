@@ -125,6 +125,8 @@ h1,
 
 .score-panel .restart {
     cursor: pointer;
+    /* Compensate for drop shadow */
+    margin-right: 4px; 
 }
 
 .dialogFormat {

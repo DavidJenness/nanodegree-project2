@@ -33,7 +33,7 @@ function setMyTimer() {
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length,
+    let currentIndex = array.length,
         temporaryValue, randomIndex;
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -165,7 +165,7 @@ $(".card").click(function () {
             const secondPick = $(this).children("i:first").attr("class");
 
             //const foundIndex = openList.indexOf(secondPick);
-            var foundIndex = openList.filter(function (e) {
+            let foundIndex = openList.filter(function (e) {
                 return e.desc == secondPick;
             });
 
@@ -182,7 +182,6 @@ $(".card").click(function () {
                 }, 1500, locToPass, secondObject);
 
             } else {
-                console.log("push " + secondPick + " to matchList");
                 matchList.push(secondPick);
                 this.className = "card match";
                 const locOfFirstGuess = "#" + openList[0].location;
@@ -192,7 +191,7 @@ $(".card").click(function () {
                 //Check if you have won the game
                 if (matchList.length == 8) {
                     timerOn = false;
-                    const victoryMessage = "You Win with a score of " + numStars + " stars and a time of " + numSecondsElapsed + " seconds.";
+                    const victoryMessage = "You win with a score of " + numStars + " stars and a time of " + numSecondsElapsed + " seconds.";
                     $("#timer").text("Timer: " + numSecondsElapsed);
                     $("#dialogText").text(victoryMessage);
                     $(".deck").children().hide();
